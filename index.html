@@ -1,0 +1,66 @@
+<!Doctype html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>24 Game</title>
+
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css" type="text/css" />
+    <link rel="stylesheet" href="bower_components/angular-material/default-theme.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" type="text/css" />
+</head>
+
+<body ng-app="game" ng-controller="GameController" layout="column" layout-align="top center">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <span class="md-flex">24 Gamers</span>
+        </div>
+    </md-toolbar>
+
+
+
+    <md-content layout="column" layout-align="center center">
+        <div class="app-content">
+
+            <div layout="row" class="numberflex">
+                <div flex ng-repeat="number in numbers track by $index">{{number}}</div>
+            </div>
+
+            <div class="md-toolbar-tools">
+                <span class="md-flex">Use all 4 numbers given above and algebra to make 24!</span>
+            </div>
+
+            <form ng-submit="calculate()">
+                <md-text-float label="Your answer" ng-model="answer" class="long"></md-text-float>
+            </form>
+
+            <md-content class="md-padding">{{info}}</md-content>
+            <md-button class="md-primary center" ng-click="refresh()">Refresh</md-button>
+            <md-button class="md-primary center" ng-click="autocalc()">Click me to see all the answers</md-button>
+
+            <!--answer panel-->
+            <md-list ng-show="autoCalcClicked">
+                <md-item ng-repeat="answer in answers">
+                    <md-item-content>
+                        <div class="md-tile-content">
+                            <p>{{answer}}</p>
+                        </div>
+                    </md-item-content>
+                </md-item>
+            </md-list>
+
+        </div>
+    </md-content>
+
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script type="text/javascript" src="bower_components/hammerjs/hammer.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-material/angular-material.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>
